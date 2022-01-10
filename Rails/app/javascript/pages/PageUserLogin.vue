@@ -66,11 +66,9 @@
         },
         methods: {
             async login() {
-                console.log('ログイン条件分岐前')
                 console.log(this.$refs.form.validate())
                 if(this.$refs.form.validate()) {
                     try {
-                        console.log('ログイン条件分岐後')
                         const sessionParams = {
                             session: {
                                 email: this.email,

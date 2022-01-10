@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :null_session
     class AuthenticationError < StandardError; end
+
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActiveRecord::RecordInvalid, with: :render_422
     rescue_from AuthenticationError, with: :not_authenticated
 
@@ -21,5 +23,9 @@ class ApplicationController < ActionController::Base
     def not_authenticated
         render json: { error: { messages: ['ログインしてください'] } }, status: :unauthorized
 
+    end
+
+    def render_404(exception)
+        render json: { error: { messages: exception.message } }, status: :not_found
     end
 end

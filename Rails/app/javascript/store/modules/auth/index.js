@@ -18,6 +18,7 @@ const mutations = {
         state.currentUser = null
         localStorage.removeItem('currentUser')
         location.reload()
+     
     }
 };
 
