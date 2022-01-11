@@ -15,6 +15,7 @@
         </v-row>
     </v-container>
 </template>
+
 <script>
     import MicropostForm from '@/components/MicropostForm'
     import TimelineList from '@/components/TimelineList'
