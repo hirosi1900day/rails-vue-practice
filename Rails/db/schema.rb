@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_081029) do
+ActiveRecord::Schema.define(version: 2022_01_12_092123) do
 
   create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "content", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_081029) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "introduce"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
