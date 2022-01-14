@@ -10,6 +10,16 @@
                     <div class="text-center" v-else>
                         一件もありません
                     </div>
+                     <template v-if="pagingMeta">
+                        <div class="text-center mb-8">
+                            <v-pagination
+                                    color="indigo"
+                                    v-model="pagingMeta.current_page"
+                                    :length="pagingMeta.total_pages"
+                                    @input="paging"
+                            ></v-pagination>
+                        </div>
+                    </template>
                 </div>
             </v-col>
         </v-row>
@@ -24,6 +34,8 @@
         data() {
             return {
                 microposts: [],
+                currentPage: 1,
+                pagingMeta: null,
             }
         },
         components: {
@@ -40,8 +52,10 @@
         },
         methods: {
             async fetchMicroposts() {
-                const res = await axios.get(`/api/microposts`)
+                const res = await axios.get(`/api/microposts`, { params: { page: this.currentPage }})
                 this.microposts = res.data.microposts
+                this.pagingMeta = res.data.meta
+                console.log(this.pagingMeta)
             },
             async createMicropost(micropostContent) {
                 const micropostParams = {
@@ -51,6 +65,11 @@
                 }
                 const res = await axios.post(`/api/microposts`, micropostParams)
                 this.microposts =[...[res.data.micropost], ...this.microposts]
+            },
+            paging(page) {
+                this.currentPage = page
+                this.fetchMicroposts()
+                this.$vuetify.goTo(0)
             }
         }
     }

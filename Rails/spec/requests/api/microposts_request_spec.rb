@@ -21,7 +21,7 @@ RSpec.describe "Api::Microposts", type: :request do
     end
     context 'ページネーションあり' do 
       let!(:microposts) { create_list(:micropost, 21) }
-      it 'pageなし' do
+      it 'page指定なし' do
         get api_microposts_path
         expect(response).to have_http_status(200)
         json = JSON.parse(response.body)
@@ -32,7 +32,7 @@ RSpec.describe "Api::Microposts", type: :request do
         )
       end
     
-      it 'pageあり' do
+      it 'page指定あり' do
         get api_microposts_path(page: 2)
         expect(response).to have_http_status(200)
         json = JSON.parse(response.body)
