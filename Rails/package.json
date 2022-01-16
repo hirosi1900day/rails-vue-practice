@@ -8,13 +8,14 @@
     "@rails/webpacker": "4.2.2",
     "axios": "^0.19.2",
     "dayjs": "^1.8.28",
+    "qs": "^6.10.3",
     "vue": "^2.6.14",
     "vue-image-crop-upload": "^2.5.0",
     "vue-loader": "^15.9.8",
     "vue-router": "^3.3.4",
+    "vue-template-compiler": "^2.6.14",
     "vuetify": "^2.3.0",
-    "vuex": "^3.4.0",
-    "vue-template-compiler": "^2.6.14"
+    "vuex": "^3.4.0"
   },
   "version": "0.1.0"
 }
