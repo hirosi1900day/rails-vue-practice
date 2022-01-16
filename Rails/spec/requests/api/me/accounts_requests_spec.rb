@@ -13,7 +13,9 @@ RSpec.describe 'Api::Me::Accounts', type: :request do
       expect(json['user']).to include({ 'id' => user.id,
                                         'name' => 'updated_name',
                                         'email' => user.email,
-                                        'introduction' => 'updated_introduction', 'avatar_url' => be_present
+                                        'introduction' => 'updated_introduction', 
+                                        'avatar_url' => be_present,
+                                        'tags' => be_a(Array)
                                       })
     end
   end
