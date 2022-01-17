@@ -24,9 +24,6 @@ class Api::UsersController < ApplicationController
 
     private 
     def search_params
-        
-        binding.pry
-        
         params.fetch(:q, {}).permit(:name, tag_ids: [])
     end
 end
