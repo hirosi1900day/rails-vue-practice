@@ -16,12 +16,15 @@ class User < ApplicationRecord
         return save! if tag_names.nil? # blank?だと削除ができない
     
         ActiveRecord::Base.transaction do
-          self.tags << tag_names.map { |name| Tag.find_or_initialize_by(name: name) }
+            
+            binding.pry
+            
+          self.tags = tag_names.map { |name| Tag.find_or_initialize_by(name: name) }
           save!
         end
         true
       rescue StandardError => e
         false
-      end
+    end
 
 end
